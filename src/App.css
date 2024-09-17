@@ -23,6 +23,11 @@
   color: dark-gray;
 }
 
+.base-Select-listbox {
+    background-color: tan;
+    margin-left: 150px;
+}
+
 .App-link {
   color: #61dafb;
 }

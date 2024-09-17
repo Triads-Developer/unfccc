@@ -1,16 +1,12 @@
 import React from 'react';
 import Fuse from 'fuse.js';
-import globalClimateActionData from './data/global_climate_action.json';
-import host_country_guests from './data/host_country_guests.json';
-import intergovernmental_orgs from './data/intergovernmental_orgs.json';
-import media from './data/media.json';
-import non_governmental_orgs from './data/non_governmental_orgs.json';
-import party_overflow from './data/party_overflow.json';
-import special_agencies_and_rel_org from './data/special_agencies_and_rel_org.json';
-import special_agencies_and_rel_org_overflow from './data/special_agencies_and_rel_org_overflow.json';
-import temp_passes from './data/temp_passes.json';
-import un_secretariat_units_bodies from './data/un_secretariat_units_bodies.json';
-import un_secretariat_units_bodies_overflow from './data/un_secretariat_units_bodies_overflow.json';
+import * as Constants from './constants.js';
+import { Option, Input } from '@mui/base';
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 import {
     FormGroup,
@@ -26,8 +22,10 @@ function Controls() {
     const [buttonDisabled, setButtonDisabled] = React.useState(true);
     const [name, setName] = React.useState('');
     const [results, setResults] = React.useState([]);
+    const [dataset, setDataset] = React.useState('');
 
     const columns = [
+        {field: 'id', headerName: 'ID', width: 10},
         {field: 'Nominator', headerName: 'Nominator', width: 125},
         {field: 'Name', headerName: 'Name', width: 125},
         {field: 'Functional title', headerName: 'Functional title', width: 125},
@@ -44,9 +42,10 @@ function Controls() {
         threshold : 0.2
     };
 
-    const fuse = new Fuse(party_overflow, options);
-
     let handleButtonPress = function() {
+        let data = Constants.Datasets[dataset];
+        let fuse = new Fuse(data, options);
+    
         let results = fuse.search(name).map(result => (
             {
                 ...result.item, 
@@ -56,19 +55,49 @@ function Controls() {
         setResults(results);
     }
 
+    const handleDatasetChange = (event) => {
+        if (event) {
+            setDataset(event.target.value);
+        }
+    }
+
     return ( <>
+
+    <Box sx={{ minWidth: 120, marginBottom: '10px'}}>
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Dataset</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          defaultValue={dataset}
+          label="Dataset"
+          onChange={handleDatasetChange}
+        >
+        {Constants.keys.map((item) => (
+            <MenuItem 
+            value={item}
+            key={item}>
+              {item}
+            </MenuItem>
+            ))}
+            </Select>
+        </FormControl>
+        </Box>
+
         <TextField
+
+            sx = { { width : '300px' } }
           id="outlined-controlled"
-          label="String to search for"
+          label="Nominator or Title to search for..."
           value={name}
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                   setName(event.target.value);
                 }}
-        />
+        /> 
 
         < Button variant = "contained"
             sx = {
-                { 'backgroundColor': '#f50057' }
+                { 'backgroundColor': '#f50057', marginTop: '10px' }
             }
             onClick = { handleButtonPress }
         >
@@ -95,4 +124,4 @@ function Controls() {
     </>);
 };
 
-    export default Controls;
+export default Controls;
