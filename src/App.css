@@ -23,6 +23,12 @@
   color: dark-gray;
 }
 
+
+.format-strings {
+  font-size: 15px);
+  text-transform: capitalize;
+}
+
 .base-Select-listbox {
     background-color: tan;
     margin-left: 150px;

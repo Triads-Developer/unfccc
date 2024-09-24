@@ -1,28 +1,26 @@
 import React from 'react';
 import Fuse from 'fuse.js';
 import * as Constants from './constants.js';
-import { Option, Input } from '@mui/base';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-
-import {
-    FormGroup,
-    FormControlLabel,
-    Switch,
-    Button,
-    TextField
-} from '@mui/material';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 import { DataGridPro } from '@mui/x-data-grid-pro';
 import { GridToolbar } from '@mui/x-data-grid';
+import 'react-tooltip/dist/react-tooltip.css';
+import { Tooltip } from 'react-tooltip';
 
 function Controls() {
-    const [buttonDisabled, setButtonDisabled] = React.useState(true);
-    const [name, setName] = React.useState('');
+    const [searchTerms, setSearchTerms] = React.useState('');
+    const [relation, setRelation] = React.useState('');
+    const [nominator, setNominator] = React.useState('');
     const [results, setResults] = React.useState([]);
-    const [dataset, setDataset] = React.useState('');
+    const [datasetName, setDatasetName] = React.useState('');
+    const [dataset, setDataset] = React.useState([]);
+    const [relationTerms, setRelationTerms] = React.useState([]);
 
     const columns = [
         {field: 'id', headerName: 'ID', width: 10},
@@ -37,61 +35,169 @@ function Controls() {
     const options = {
         keys : [
             "Nominator",
-            "Functional title"
+            "Functional title",
+            "Department",
+            "Organization"
         ],
         threshold : 0.2
     };
 
-    let handleButtonPress = function() {
-        let data = Constants.Datasets[dataset];
-        let fuse = new Fuse(data, options);
-    
-        let results = fuse.search(name).map(result => (
-            {
-                ...result.item, 
-                id: result.refIndex
-            }
-        ));
-        setResults(results);
+    let handleSubmit= function(event) {
+        event.preventDefault();
+
+        let filteredDataset = dataset;
+
+        if(!!nominator) {
+            filteredDataset = filteredDataset.filter(item => {
+                return item.Nominator === nominator;
+            });
+        }
+
+        if(!!relation) {
+            filteredDataset = filteredDataset.filter(item => {
+                return item.Relation === relation;
+            });
+        }
+
+        Search(filteredDataset);
     }
 
-    const handleDatasetChange = (event) => {
+    let Search = function(data) {
+        let fuse = new Fuse(data, options);
+
+        //if the user didn't enter a search term, then return the full dataset.
+        if (!searchTerms) {
+            setResults(data.map((item) => {
+                return {
+                    ...item,
+                    id: crypto.randomUUID()
+                }
+            }));
+        } else {
+            let results = fuse.search(searchTerms).map((result) => {
+                return {
+                    ...result.item, 
+                    id: result.refIndex
+                }
+            });
+            setResults(results);
+        }
+}
+
+
+    const handleNominatorChange = (event) => {
         if (event) {
-            setDataset(event.target.value);
+            setNominator(event.target.value);
         }
     }
 
-    return ( <>
+    const handleRelationChange = (event) => {
+        if (event) {
+            setRelation(event.target.value);
+        }
+    }
 
-    <Box sx={{ minWidth: 120, marginBottom: '10px'}}>
+    const handleDatasetNameChange = (event) => {
+        if (event) {
+            setDatasetName(event.target.value);
+            setDataset(Constants.Datasets[event.target.value]);
+
+            let terms = Constants.Datasets[event.target.value].map(item => {return item.Relation});
+            let unique = Array.from(new Set(terms));
+            setRelationTerms(unique.sort());
+        }
+    }
+
+    const formatName = (name) => {
+        let currentName = name.replaceAll("_", " ");
+
+        return currentName;
+    }
+
+    return ( <>
+<Tooltip
+  anchorSelect=".my-anchor-element"
+  place = "right"
+  content="Hello world!"
+/>
+        <form onSubmit={handleSubmit}>
+    <Box sx={{ minWidth: 120, marginBottom: '10px', fontSize: '10px'}}>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Dataset</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          defaultValue={dataset}
+          defaultValue={datasetName}
           label="Dataset"
-          onChange={handleDatasetChange}
+          onChange={handleDatasetNameChange}
         >
         {Constants.keys.map((item) => (
             <MenuItem 
             value={item}
+            className="my-anchor-element format-strings"
+            data-tooltip-content={`Place description for ${item} here.`}
             key={item}>
-              {item}
+               {formatName(item)} 
             </MenuItem>
             ))}
             </Select>
         </FormControl>
-        </Box>
+    </Box>
+        <div>
 
+        <Box sx={{ minWidth: 120, marginBottom: '10px'}}>
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Nominator</InputLabel>
+                    <Select                                                    
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    placeholder="Nominator"
+                    defaultValue={nominator}
+                    label="Nominator"
+                    name="nominator"
+                    onChange={handleNominatorChange} >
+                        {Constants.nominatorOptions.map((item) => (
+                            <MenuItem 
+                            value={item}
+                            key={item}>
+                                {item}
+                            </MenuItem>
+                        ))}
+                    </Select>
+                </FormControl>
+            </Box>
+
+        <Box sx={{ minWidth: 120, marginBottom: '10px'}}>
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Relation to Nominator</InputLabel>
+                    <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    placeholder="Relation to Nominator"
+                    defaultValue={relation}
+                    label="Relation"
+                    name="relation"
+                    onChange={handleRelationChange} >
+                        {relationTerms.map((item) => (
+                            <MenuItem 
+                            value={item}
+                            key={item}>
+                            {item}
+                        </MenuItem>
+                        ))}
+                    </Select>
+                </FormControl>
+            </Box>
+
+            </div>
         <TextField
 
             sx = { { width : '300px' } }
           id="outlined-controlled"
-          label="Nominator or Title to search for..."
-          value={name}
+          label="Nominator, Title, Department, Organization to search for..."
+          value={searchTerms}
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                  setName(event.target.value);
+                  setSearchTerms(event.target.value);
                 }}
         /> 
 
@@ -99,10 +205,11 @@ function Controls() {
             sx = {
                 { 'backgroundColor': '#f50057', marginTop: '10px' }
             }
-            onClick = { handleButtonPress }
+            type="submit"
         >
-            Launch 
+            Search
         </Button> 
+        </form>
 
         { results.length > 0 ?
         <DataGridPro

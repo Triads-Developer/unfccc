@@ -14,17 +14,12 @@ import Controls from './Controls.js';
  */
 
 function App() {
-    return ( <
-        div className = "App" >
-        <
-        header className = "App-header" >
-        <
-        Header / >
-        <
-        Controls / >
-        <
-        /header> <
-        /div>
+    return ( < div className = "App" >
+        < header className = "App-header" >
+            < Header / >
+            < Controls / >
+        </header> 
+        </div>
     );
 }
 
