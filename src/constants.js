@@ -39,9 +39,13 @@ export const Datasets = {
 };
 
 export const relationOptions = [
-    "Friend",
-    "Briber",
-    "Super Secret Contact"
+    "Paid relationship/contract with the nominating entity",
+    "Paid relationship/contract with an affiliate/member of the nominating entity",
+    "Unpaid advisory capacity",
+    "Partner/sponsorship of the nominating entity",
+    "Guest of the nominating entity",
+    "Other (please specify)",
+    "Choose not to disclose"
 ];
 
 export const nominatorOptions = [

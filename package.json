@@ -8,7 +8,7 @@
     "@mui/base": "^5.0.0-beta.40",
     "@mui/material": "^5.16.7",
     "@mui/x-data-grid": "^7.13.0",
-    "@mui/x-data-grid-pro": "^7.16.0",
+    "@mui/x-data-grid-pro": "^7.18.0",
     "@mui/x-license": "^7.16.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",

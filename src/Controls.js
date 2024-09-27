@@ -20,7 +20,6 @@ function Controls() {
     const [results, setResults] = React.useState([]);
     const [datasetName, setDatasetName] = React.useState('');
     const [dataset, setDataset] = React.useState([]);
-    const [relationTerms, setRelationTerms] = React.useState([]);
 
     const columns = [
         {field: 'id', headerName: 'ID', width: 10},
@@ -101,10 +100,6 @@ function Controls() {
         if (event) {
             setDatasetName(event.target.value);
             setDataset(Constants.Datasets[event.target.value]);
-
-            let terms = Constants.Datasets[event.target.value].map(item => {return item.Relation});
-            let unique = Array.from(new Set(terms));
-            setRelationTerms(unique.sort());
         }
     }
 
@@ -119,12 +114,14 @@ function Controls() {
   anchorSelect=".my-anchor-element"
   place = "right"
   content="Hello world!"
+  className="tooltip" 
 />
         <form onSubmit={handleSubmit}>
-    <Box sx={{ minWidth: 120, marginBottom: '10px', fontSize: '10px'}}>
+    <Box sx={{ minWidth: 120, marginBottom: '10px'}}>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Dataset</InputLabel>
         <Select
+          className="format-strings"
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           defaultValue={datasetName}
@@ -178,7 +175,7 @@ function Controls() {
                     label="Relation"
                     name="relation"
                     onChange={handleRelationChange} >
-                        {relationTerms.map((item) => (
+                        {Constants.relationOptions.map((item) => (
                             <MenuItem 
                             value={item}
                             key={item}>
@@ -205,8 +202,7 @@ function Controls() {
             sx = {
                 { 'backgroundColor': '#f50057', marginTop: '10px' }
             }
-            type="submit"
-        >
+            type="submit" >
             Search
         </Button> 
         </form>
@@ -217,6 +213,9 @@ function Controls() {
           columns={columns}
           initialState={{
             pagination: { paginationModel: { page: 0, pageSize: 10 }, },
+          }}
+          columnVisibilityModel={{
+            id: false,
           }}
           pagination
           pageSizeOptions={[5, 10, 25]}
