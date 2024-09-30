@@ -104,6 +104,9 @@ dist
 .temp
 .cache
 
+# ES lint
+.eslintrc.js
+
 # Docusaurus cache and generated files
 .docusaurus
 

@@ -1,7 +1,7 @@
-import React from 'react';
-import './App.css';
-import Header from './Header.js';
-import Controls from './Controls.js';
+import React from 'react'
+import './App.css'
+import Header from './Header.js'
+import Controls from './Controls.js'
 
 /*
  * This app will contain two components, a toggle and a button
@@ -14,13 +14,14 @@ import Controls from './Controls.js';
  */
 
 function App() {
-    return ( < div className = "App" >
-        < header className = "App-header" >
-            < Header / >
-            < Controls / >
-        </header> 
-        </div>
-    );
+  return (
+    <div className='App'>
+      <header className='App-header'>
+        <Header />
+        <Controls />
+      </header>
+    </div>
+  )
 }
 
-export default App;
+export default App
