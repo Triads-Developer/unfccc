@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  font-family: "IvyStyle", sans-serif;
+  background-color: #B5E3D8;
 }
 
 .App-header {
@@ -9,8 +11,11 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: dark-gray;
 }
+
+.MuiFormControl-root {
+    background-color: white;
+    }
 
 .tooltip {
     z-index: 10;
