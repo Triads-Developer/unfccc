@@ -35,6 +35,9 @@ function Controls() {
 
     if (relation) {
       filteredDataset = filteredDataset.filter((item) => {
+        if (relation === 'Other (please specify)') {
+          return Constants.relationOptions.indexOf(item.Relation) === -1
+        }
         return item.Relation === relation
       })
     }
@@ -104,7 +107,7 @@ function Controls() {
         <TextField
           sx={{ width: '300px' }}
           id='outlined-controlled'
-          label='Nominator, Title, Department, Organization to search for...'
+          label='Title, Department, Organization'
           value={searchTerms}
           onChange={(event) => {
             setSearchTerms(event.target.value)
