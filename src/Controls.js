@@ -7,7 +7,6 @@ import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 import ResultsGrid from './ResultsGrid.js'
 import Dropdown from './Dropdown.js'
-import Header from './Header.js'
 import Search from './search.js'
 
 function Controls() {
@@ -74,60 +73,55 @@ function Controls() {
 
   return (
     <>
-      {results.length == 0 && <Header />}
       <Tooltip anchorSelect='.my-anchor-element' place='right' content='Hello world!' className='tooltip' />
-      <form onSubmit={handleSubmit}>
-        <Box sx={{ m: 3, marginTop: '25px' }}>
-          <Dropdown
-            label='Dataset'
-            val={datasetName}
-            handleValChange={handleDatasetNameChange}
-            options={Constants.keys}
-            allowMultiple={true}
-          />
-          <p>Text instructions here </p>
-          <Dropdown
-            label='Nominator'
-            val={nominator}
-            handleValChange={handleNominatorChange}
-            options={Constants.nominatorOptions}
-            allowMultiple={true}
-          />
-          <Dropdown
-            label='Relation to Nominator'
-            val={relation}
-            handleValChange={handleRelationChange}
-            options={Constants.relationOptions}
-            allowMultiple={true}
-          />
+      <div className='search-fields'>
+        <form onSubmit={handleSubmit}>
+          <Box sx={{ m: 3, marginTop: '25px' }}>
+            <Dropdown
+              label='Dataset'
+              val={datasetName}
+              handleValChange={handleDatasetNameChange}
+              options={Constants.keys}
+              allowMultiple={true}
+            />
+            <p>Text instructions here </p>
+            <Dropdown
+              label='Nominator'
+              val={nominator}
+              handleValChange={handleNominatorChange}
+              options={Constants.nominatorOptions}
+              allowMultiple={true}
+            />
+            <Dropdown
+              label='Relation to Nominator'
+              val={relation}
+              handleValChange={handleRelationChange}
+              options={Constants.relationOptions}
+              allowMultiple={true}
+            />
 
-          <TextField
-            sx={{ width: '500px' }}
-            id='outlined-controlled'
-            label='Title, Department, Organization'
-            value={searchTerms}
-            onChange={(event) => {
-              setSearchTerms(event.target.value)
-            }}
-          />
+            <TextField
+              sx={{ width: '500px' }}
+              id='outlined-controlled'
+              label='Title, Department, Organization'
+              value={searchTerms}
+              onChange={(event) => {
+                setSearchTerms(event.target.value)
+              }}
+            />
 
-          <Box>
-            <Button
-              variant='contained'
-              disabled={datasetName.length === 0}
-              sx={{ backgroundColor: '#971B2F', margin: '10px' }}
-              type='submit'
-            >
-              Search
-            </Button>
+            <Box>
+              <Button id='search-button' disabled={datasetName.length === 0} type='submit'>
+                Search
+              </Button>
 
-            <Button variant='text' sx={{ margin: '10px' }} onClick={resetFilters}>
-              Reset Filters
-            </Button>
+              <Button variant='text' sx={{ margin: '20px' }} onClick={resetFilters}>
+                Reset Filters
+              </Button>
+            </Box>
           </Box>
-        </Box>
-      </form>
-
+        </form>
+      </div>
       <ResultsGrid results={results} />
     </>
   )

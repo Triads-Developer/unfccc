@@ -5,22 +5,13 @@ import Button from '@mui/material/Button'
 function Tutorial({ handleDismissTutorial }) {
   return (
     <>
-      <p>Welcome to Washu&apos;s UNFCCC Flopdata database </p>
-      <p>This site will allow you to query 2023&apos;s UNFCCC Flopdata </p>
-      <Button
-        variant='text'
-        sx={{
-          backgroundColor: '#971B2F',
-          color: 'white',
-          '&:hover': {
-            backgroundColor: 'blue'
-          },
-          margin: '10px'
-        }}
-        onClick={handleDismissTutorial}
-      >
-        Begin searching!
-      </Button>
+      <div className='tutorial-box'>
+        <p>Welcome to Washu&apos;s UNFCCC Flopdata database </p>
+        <p>This site will allow you to query 2023&apos;s UNFCCC Flopdata </p>
+        <Button variant='text' id='tutorial-button' onClick={handleDismissTutorial}>
+          Begin searching!
+        </Button>
+      </div>
     </>
   )
 }
