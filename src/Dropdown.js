@@ -7,7 +7,7 @@ import InputLabel from '@mui/material/InputLabel'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 
-function Dropdown({ label, val, handleValChange, options }) {
+function Dropdown({ label, val, handleValChange, options, allowMultiple }) {
   const formatName = (name) => {
     let currentName = name.replaceAll('_', ' ')
 
@@ -15,17 +15,27 @@ function Dropdown({ label, val, handleValChange, options }) {
   }
 
   return (
-    <Box sx={{ minWidth: 120, marginBottom: '10px' }}>
+    <Box sx={{ marginBottom: '10px' }}>
       <FormControl fullWidth>
         <InputLabel id='demo-simple-select-label'>{label}</InputLabel>
         <Select
           className='format-strings'
           labelId='demo-simple-select-label'
           id='demo-simple-select'
+          multiple={allowMultiple}
           value={val}
           label={label}
           onChange={handleValChange}
+          slotProps={{ popup: { disablePortal: false } }}
         >
+          <MenuItem key='clear' value='clear'>
+            Clear selection
+          </MenuItem>
+
+          <MenuItem key='all' value='all'>
+            Select All
+          </MenuItem>
+
           {options.map((item) => (
             <MenuItem
               value={item}
@@ -44,9 +54,10 @@ function Dropdown({ label, val, handleValChange, options }) {
 
 Dropdown.propTypes = {
   label: PropTypes.string,
-  val: PropTypes.string,
+  val: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
   handleValChange: PropTypes.func,
-  options: PropTypes.array
+  options: PropTypes.array,
+  allowMultiple: PropTypes.bool
 }
 
 export default Dropdown

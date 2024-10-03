@@ -11,7 +11,6 @@ import un_secretariat_units_bodies from './data/un_secretariat_units_bodies.json
 import un_secretariat_units_bodies_overflow from './data/un_secretariat_units_bodies_overflow.json'
 
 export const keys = [
-  '',
   'global_climate_action_data',
   'host_country_guests',
   'intergovernmental_orgs',
@@ -40,7 +39,6 @@ export const Datasets = {
 }
 
 export const relationOptions = [
-  '',
   'Paid relationship/contract with the nominating entity',
   'Paid relationship/contract with an affiliate/member of the nominating entity',
   'Unpaid advisory capacity',
@@ -51,7 +49,6 @@ export const relationOptions = [
 ]
 
 export const nominatorOptions = [
-  '',
   'Albania',
   'Angola',
   'Antigua and Barbuda',

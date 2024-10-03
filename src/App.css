@@ -4,6 +4,14 @@
   background-color: #B5E3D8;
 }
 
+.MuiDataGrid-row {
+  background-color: white;
+}
+
+.MuiPopover-paper {
+    left: 715px;
+}
+
 .App-header {
   min-height: 100vh;
   display: flex;
@@ -15,7 +23,7 @@
 
 .MuiFormControl-root {
     background-color: white;
-    }
+}
 
 .tooltip {
     z-index: 10;
@@ -26,6 +34,17 @@
 
 .format-strings {
   text-transform: capitalize;
+  overflow-y: visible;
+  display:block;
+  width: 500px;
+}
+
+.select {
+  /* make it min-height*/
+  min-height: 50px;
+  border-radius: 25px;
+  border-color: #555;
+  padding: 10px;
 }
 
 .base-Select-listbox {

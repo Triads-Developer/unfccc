@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
-import Header from './Header.js'
 import Controls from './Controls.js'
+import Tutorial from './Tutorial.js'
 
 /*
  * This app will contain two components, a toggle and a button
@@ -14,11 +14,19 @@ import Controls from './Controls.js'
  */
 
 function App() {
+  const [showIntro, setShowIntro] = React.useState(true)
+
+  const handleDismissTutorial = (event) => {
+    if (event) {
+      setShowIntro(false)
+    }
+  }
+
   return (
     <div className='App'>
       <header className='App-header'>
-        <Header />
-        <Controls />
+        {showIntro && <Tutorial handleDismissTutorial={handleDismissTutorial} />}
+        {!showIntro && <Controls />}
       </header>
     </div>
   )
