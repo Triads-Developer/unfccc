@@ -55,9 +55,6 @@ function ResultsGrid({ results }) {
         {results.length > 0 ? (
           <DataGridPro
             rows={results}
-            sx={{
-              backgroundColor: '#B5E3D8'
-            }}
             columns={columns}
             initialState={{
               pagination: { paginationModel: { page: 0, pageSize: 10 } }

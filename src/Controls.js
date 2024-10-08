@@ -16,6 +16,7 @@ function Controls() {
   const [results, setResults] = React.useState([])
   const [datasetName, setDatasetName] = React.useState([])
   const [dataset, setDataset] = React.useState([])
+  const [hideFilters, setHideFilters] = React.useState(false)
 
   let handleSubmit = function (event) {
     event.preventDefault()
@@ -69,6 +70,11 @@ function Controls() {
     setDataset([])
     setSearchTerms('')
     setResults([])
+    setHideFilters(false)
+  }
+
+  const handleHideFilterClick = () => {
+    setHideFilters(!hideFilters)
   }
 
   return (
@@ -76,7 +82,7 @@ function Controls() {
       <Tooltip anchorSelect='.my-anchor-element' place='right' content='Hello world!' className='tooltip' />
       <div className='search-fields'>
         <form onSubmit={handleSubmit}>
-          <Box sx={{ m: 3, marginTop: '25px' }}>
+          <Box className={hideFilters ? 'hidden' : ''} sx={{ m: 3, marginTop: '25px' }}>
             <Dropdown
               label='Dataset'
               val={datasetName}
@@ -109,16 +115,20 @@ function Controls() {
                 setSearchTerms(event.target.value)
               }}
             />
+          </Box>
 
-            <Box>
-              <Button id='search-button' disabled={datasetName.length === 0} type='submit'>
-                Search
-              </Button>
+          <Box className='filter-buttons'>
+            <Button id='search-button' disabled={datasetName.length === 0} type='submit'>
+              Search
+            </Button>
 
-              <Button variant='text' sx={{ margin: '20px' }} onClick={resetFilters}>
-                Reset Filters
-              </Button>
-            </Box>
+            <Button variant='text' sx={{ margin: '20px' }} onClick={resetFilters}>
+              Reset Filters
+            </Button>
+
+            <Button variant='text' sx={{ margin: '20px' }} onClick={handleHideFilterClick}>
+              {hideFilters ? 'Show Filters' : 'Hide Filters'}
+            </Button>
           </Box>
         </form>
       </div>
