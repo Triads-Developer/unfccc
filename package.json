@@ -33,7 +33,8 @@
     "eject": "react-scripts eject",
     "lint": "eslint  --fix src/**/*.js",
     "format": "prettier src/**/*.js --write --config ./.prettierrc",
-    "deploy": "./deploy_script.sh"
+    "deploy-dev": "./dev_deploy.sh",
+    "deploy-stage": "./stage_deploy.sh"
   },
   "eslintConfig": {
     "extends": [
