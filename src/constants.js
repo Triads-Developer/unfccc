@@ -4,35 +4,38 @@ import intergovernmental_orgs from './data/intergovernmental_orgs.json'
 import media from './data/media.json'
 import non_governmental_orgs from './data/non_governmental_orgs.json'
 import party_overflow from './data/party_overflow.json'
-import special_agencies_and_rel_org from './data/special_agencies_and_rel_org.json'
-import special_agencies_and_rel_org_overflow from './data/special_agencies_and_rel_org_overflow.json'
+import special_agencies_and_rel_orgs from './data/special_agencies_and_rel_org.json'
+import special_agencies_and_rel_orgs_overflow from './data/special_agencies_and_rel_org_overflow.json'
 import temp_passes from './data/temp_passes.json'
 import un_secretariat_units_bodies from './data/un_secretariat_units_bodies.json'
 import un_secretariat_units_bodies_overflow from './data/un_secretariat_units_bodies_overflow.json'
+import parties from './data/parties.json'
 
 export const keys = [
+  'parties',
   'global_climate_action_data',
   'host_country_guests',
   'intergovernmental_orgs',
   'media',
   'non_governmental_orgs',
   'party_overflow',
-  'special_agencies_and_rel_org',
-  'special_agencies_and_rel_org_overflow',
+  'special_agencies_and_rel_orgs',
+  'special_agencies_and_rel_orgs_overflow',
   'temp_passes',
   'un_secretariat_units_bodies',
   'un_secretariat_units_bodies_overflow'
 ]
 
 export const Datasets = {
+  parties: parties,
   global_climate_action_data: global_climate_action_data,
   host_country_guests: host_country_guests,
   intergovernmental_orgs: intergovernmental_orgs,
   media: media,
   non_governmental_orgs: non_governmental_orgs,
   party_overflow: party_overflow,
-  special_agencies_and_rel_org: special_agencies_and_rel_org,
-  special_agencies_and_rel_org_overflow: special_agencies_and_rel_org_overflow,
+  special_agencies_and_rel_orgs: special_agencies_and_rel_orgs,
+  special_agencies_and_rel_orgs_overflow: special_agencies_and_rel_orgs_overflow,
   temp_passes: temp_passes,
   un_secretariat_units_bodies: un_secretariat_units_bodies,
   un_secretariat_units_bodies_overflow: un_secretariat_units_bodies_overflow
@@ -205,3 +208,12 @@ export const nominatorOptions = [
   'Zambia',
   'Zimbabwe'
 ]
+
+export const nominatorInstructions =
+  'The nominator dropdown only includes countries. If you are looking for a non-country nominator – please enter the term in the search box below.'
+
+export const relationInstructions =
+  'The categories in the "Relation to Nominator" dropdown are the choices available to the nominator when the delegate is nominated. There are no additional descriptions of the categories.'
+
+export const searchInstructions =
+  'This data comes from the UNFCCC Final List of Participants – on site delegates-excel file. The excel file separates delegate by badge category and draws its data from what is submitted when a delegate is nominated and confirmed.'

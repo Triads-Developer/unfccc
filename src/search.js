@@ -27,7 +27,7 @@ export default function Search(data, nominator, relation, searchTerms) {
   }
 
   const options = {
-    keys: ['Nominator', 'Functional title', 'Department', 'Organization'],
+    keys: ['Nominator', 'Functional title', 'Department', 'Organization', 'Name'],
     threshold: 0.2
   }
 

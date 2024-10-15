@@ -11,12 +11,15 @@ function Dropdown({ label, val, handleValChange, options, allowMultiple }) {
   const formatName = (name) => {
     let currentName = name.replaceAll('_', ' ')
 
+    currentName = currentName.replaceAll('orgs', 'organizations')
+    currentName = currentName.replaceAll('temp', 'temporary')
+    currentName = currentName.replaceAll('units bodies', 'unites and bodies')
     return currentName
   }
 
   return (
     <Box sx={{ marginBottom: '10px' }}>
-      <FormControl fullWidth>
+      <FormControl>
         <InputLabel id='demo-simple-select-label'>{label}</InputLabel>
         <Select
           className='format-strings'

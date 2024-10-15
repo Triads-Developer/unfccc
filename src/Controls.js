@@ -8,6 +8,7 @@ import { Tooltip } from 'react-tooltip'
 import ResultsGrid from './ResultsGrid.js'
 import Dropdown from './Dropdown.js'
 import Search from './search.js'
+import Link from '@mui/material/Link'
 
 function Controls() {
   const [searchTerms, setSearchTerms] = React.useState('')
@@ -57,8 +58,13 @@ function Controls() {
         setDatasetName(Constants.keys)
         setDataset(Object.values(Constants.Datasets).flat())
       } else {
+        let newDataset = []
+        event.target.value.forEach((element) => {
+          newDataset.push(Constants.Datasets[element])
+        })
+
         setDatasetName(event.target.value)
-        setDataset(Constants.Datasets[event.target.value])
+        setDataset(newDataset.flat())
       }
     }
   }
@@ -83,14 +89,22 @@ function Controls() {
       <div className='search-fields'>
         <form onSubmit={handleSubmit}>
           <Box className={hideFilters ? 'hidden' : ''} sx={{ m: 3, marginTop: '25px' }}>
+            <Box sx={{ maxWidth: '100%' }}>
+              <p>{Constants.searchInstructions}</p>
+            </Box>
+
             <Dropdown
-              label='Dataset'
+              label='Badge Category'
               val={datasetName}
               handleValChange={handleDatasetNameChange}
               options={Constants.keys}
               allowMultiple={true}
             />
-            <p>Text instructions here </p>
+
+            <Box sx={{ maxWidth: '100%' }}>
+              <p>{Constants.nominatorInstructions}</p>
+            </Box>
+
             <Dropdown
               label='Nominator'
               val={nominator}
@@ -98,6 +112,16 @@ function Controls() {
               options={Constants.nominatorOptions}
               allowMultiple={true}
             />
+
+            <Box sx={{ maxWidth: '100%' }}>
+              <p>
+                This data comes from the{' '}
+                <Link href='https://unfccc.int/documents/636676'> UNFCCC Final List of Participants – on site delegates-excel file</Link>.
+                The excel file separates delegate by badge category and draws its data from what is submitted when a delegate is nominated
+                and confirmed.
+              </p>
+            </Box>
+
             <Dropdown
               label='Relation to Nominator'
               val={relation}
@@ -107,9 +131,9 @@ function Controls() {
             />
 
             <TextField
-              sx={{ width: '500px' }}
+              sx={{ width: '100%' }}
               id='outlined-controlled'
-              label='Title, Department, Organization'
+              label='Title, Department, Organization, Nominator, and Name'
               value={searchTerms}
               onChange={(event) => {
                 setSearchTerms(event.target.value)
