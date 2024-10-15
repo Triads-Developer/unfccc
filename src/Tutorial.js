@@ -17,7 +17,7 @@ function Tutorial({ handleDismissTutorial }) {
         </p>
 
         <Button variant='text' id='tutorial-button' onClick={handleDismissTutorial}>
-          Begin searching!
+          Begin searching
         </Button>
       </div>
     </>
