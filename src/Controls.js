@@ -18,11 +18,12 @@ function Controls() {
   const [datasetName, setDatasetName] = React.useState([])
   const [dataset, setDataset] = React.useState([])
   const [hideFilters, setHideFilters] = React.useState(false)
+  const [searchAttempted, setSearchAttemped] = React.useState(false)
 
   let handleSubmit = function (event) {
     event.preventDefault()
-
     setResults(Search(dataset, nominator, relation, searchTerms))
+    setSearchAttemped(true)
   }
 
   const handleNominatorChange = (event) => {
@@ -59,11 +60,13 @@ function Controls() {
         setDataset(Object.values(Constants.Datasets).flat())
       } else {
         let newDataset = []
+        let newDatasetName = []
         event.target.value.forEach((element) => {
           newDataset.push(Constants.Datasets[element])
+          newDatasetName.push(element)
         })
 
-        setDatasetName(event.target.value)
+        setDatasetName(newDatasetName.flat())
         setDataset(newDataset.flat())
       }
     }
@@ -77,6 +80,7 @@ function Controls() {
     setSearchTerms('')
     setResults([])
     setHideFilters(false)
+    setSearchAttemped(false)
   }
 
   const handleHideFilterClick = () => {
@@ -85,7 +89,13 @@ function Controls() {
 
   return (
     <>
-      <Tooltip anchorSelect='.my-anchor-element' place='right' content='Badge Category Required' className='tooltip' />
+      <Tooltip
+        hidden={datasetName.length !== 0}
+        anchorSelect='#search-button-box'
+        place='right'
+        content='Badge Category Required'
+        className='tooltip'
+      />
       <div className='search-fields'>
         <form onSubmit={handleSubmit}>
           <Box className={hideFilters ? 'hidden' : ''} sx={{ m: 3, marginTop: '25px' }}>
@@ -146,7 +156,7 @@ function Controls() {
           </Box>
 
           <Box className='filter-buttons'>
-            <span className={datasetName.length === 0 ? 'my-anchor-element' : ''}>
+            <span id='search-button-box'>
               <Button id='search-button' disabled={datasetName.length === 0} type='submit'>
                 Search
               </Button>
@@ -161,7 +171,7 @@ function Controls() {
           </Box>
         </form>
       </div>
-      <ResultsGrid results={results} />
+      {results.length === 0 && searchAttempted ? <h1>No results with above search criteria </h1> : <ResultsGrid results={results} />}
     </>
   )
 }
