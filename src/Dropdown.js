@@ -40,12 +40,7 @@ function Dropdown({ label, val, handleValChange, options, allowMultiple }) {
           </MenuItem>
 
           {options.map((item) => (
-            <MenuItem
-              value={item}
-              className='my-anchor-element format-strings'
-              data-tooltip-content={`Place description for ${item} here.`}
-              key={item}
-            >
+            <MenuItem value={item} className='format-strings' data-tooltip-content={`Place description for ${item} here.`} key={item}>
               {formatName(item)}
             </MenuItem>
           ))}

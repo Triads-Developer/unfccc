@@ -85,16 +85,21 @@ function Controls() {
 
   return (
     <>
-      <Tooltip anchorSelect='.my-anchor-element' place='right' content='Hello world!' className='tooltip' />
+      <Tooltip anchorSelect='.my-anchor-element' place='right' content='Badge Category Required' className='tooltip' />
       <div className='search-fields'>
         <form onSubmit={handleSubmit}>
           <Box className={hideFilters ? 'hidden' : ''} sx={{ m: 3, marginTop: '25px' }}>
-            <Box sx={{ maxWidth: '100%' }}>
-              <p>{Constants.searchInstructions}</p>
+            <Box sx={{ maxWidth: '100%', pb: '1em' }}>
+              <p>
+                This data comes from the{' '}
+                <Link href='https://unfccc.int/documents/636676'> UNFCCC Final List of Participants – on site delegates-excel file</Link>.
+                The excel file separates delegate by badge category and draws its data from what is submitted when a delegate is nominated
+                and confirmed.
+              </p>
             </Box>
 
             <Dropdown
-              label='Badge Category'
+              label='Badge Category *'
               val={datasetName}
               handleValChange={handleDatasetNameChange}
               options={Constants.keys}
@@ -114,12 +119,7 @@ function Controls() {
             />
 
             <Box sx={{ maxWidth: '100%' }}>
-              <p>
-                This data comes from the{' '}
-                <Link href='https://unfccc.int/documents/636676'> UNFCCC Final List of Participants – on site delegates-excel file</Link>.
-                The excel file separates delegate by badge category and draws its data from what is submitted when a delegate is nominated
-                and confirmed.
-              </p>
+              <p>{Constants.relationInstructions}</p>
             </Box>
 
             <Dropdown
@@ -129,6 +129,10 @@ function Controls() {
               options={Constants.relationOptions}
               allowMultiple={true}
             />
+
+            <Box sx={{ maxWidth: '100%' }}>
+              <p>{Constants.searchBoxInstructions}</p>
+            </Box>
 
             <TextField
               sx={{ width: '100%' }}
@@ -142,10 +146,11 @@ function Controls() {
           </Box>
 
           <Box className='filter-buttons'>
-            <Button id='search-button' disabled={datasetName.length === 0} type='submit'>
-              Search
-            </Button>
-
+            <span className={datasetName.length === 0 ? 'my-anchor-element' : ''}>
+              <Button id='search-button' disabled={datasetName.length === 0} type='submit'>
+                Search
+              </Button>
+            </span>
             <Button variant='text' sx={{ margin: '20px' }} onClick={resetFilters}>
               Reset Filters
             </Button>
