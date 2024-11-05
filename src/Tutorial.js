@@ -16,6 +16,10 @@ function Tutorial({ handleDismissTutorial }) {
           The underlying data can be found on the{' '}
           <Link href='https://unfccc.int/documents/636676'>United Nations Framework Convention on Climate Change (UNFCCC) website.</Link>{' '}
         </p>
+        <p>
+          This is a work in progress, and we hope it is helpful to you in your research and understanding of COP delegates. If you have any
+          suggestions for improvement, email <a href='mailto: martin@wustl.edu'>martin@wustl.edu</a>.
+        </p>
 
         <Button variant='text' id='tutorial-button' onClick={handleDismissTutorial}>
           Begin searching
