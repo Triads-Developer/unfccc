@@ -15,11 +15,13 @@ export default function Search(data, nominator, relation, searchTerms) {
   const filterDatasetByRelation = (data, relation) => {
     if (relation.length > 0) {
       return data.filter((item) => {
+        let found = relation.indexOf(item.Relation) !== -1
         //if Other is selected
-        if (relation.indexOf('Other (please specify)') !== -1) {
-          return Constants.relationOptions.indexOf(item.Relation) === -1
+        if (!found && relation.indexOf('Other (please specify)') !== -1) {
+          found = Constants.relationOptions.indexOf(item.Relation) === -1
         }
-        return relation.indexOf(item.Relation) !== -1
+
+        return found
       })
     } else {
       return data
