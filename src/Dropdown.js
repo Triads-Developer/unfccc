@@ -40,7 +40,18 @@ function Dropdown({ label, val, handleValChange, options, allowMultiple }) {
           </MenuItem>
 
           {options.map((item) => (
-            <MenuItem value={item} className='format-strings' data-tooltip-content={`Place description for ${item} here.`} key={item}>
+            <MenuItem
+              value={item}
+              sx={{
+                '&.Mui-selected': {
+                  backgroundColor: '#D9D9D9',
+                  '&.Mui-focusVisible': { background: 'orange' }
+                }
+              }}
+              className='format-strings'
+              data-tooltip-content={`Place description for ${item} here.`}
+              key={item}
+            >
               {formatName(item)}
             </MenuItem>
           ))}
