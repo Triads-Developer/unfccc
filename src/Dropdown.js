@@ -18,7 +18,7 @@ function Dropdown({ label, val, handleValChange, options, allowMultiple }) {
   }
 
   return (
-    <Box sx={{ marginBottom: '10px' }}>
+    <Box sx={{ width: '100%', marginBottom: '10px' }}>
       <FormControl>
         <InputLabel id='demo-simple-select-label'>{label}</InputLabel>
         <Select

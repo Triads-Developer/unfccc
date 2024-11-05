@@ -23,6 +23,7 @@
 
 .MuiFormControl-root {
     background-color: white;
+  width: 100%;
 }
 
 .tooltip {
@@ -36,7 +37,6 @@
   text-transform: capitalize;
   overflow-y: visible;
   display:block;
-  width: 500px;
 }
 
 .App-link {
@@ -93,6 +93,6 @@
   background-color: #D9D9D9;
   color: black;
   border-radius:  10px;
-  max-width: 50%;
+  max-width: 70%;
   padding: 1em;
 }
