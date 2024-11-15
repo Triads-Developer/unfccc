@@ -216,7 +216,7 @@ export const relationInstructions =
   'The categories in the "Relation to Nominator" dropdown are the choices available to the nominator when the delegate is nominated. There are no additional descriptions of the categories.'
 
 export const searchBoxInstructions =
-  'Search Box – please enter search terms and the search will be conducted across Title, Department, Organization, Nominator and Name.'
+  'Search Box – please enter a search term which will be conducted across Title, Department, Organization, Nominator and Name.'
 
 export const searchInstructions =
-  'This data comes from the UNFCCC Final List of Participants – on site delegates-excel file. The excel file separates delegate by badge category and draws its data from what is submitted when a delegate is nominated and confirmed.'
+  'This data comes from the COP 28 UNFCCC Final List of Participants – on site delegates-excel file. The excel file separates delegate by badge category and draws its data from what is submitted when a delegate is nominated and confirmed.'

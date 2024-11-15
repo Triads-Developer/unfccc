@@ -3,7 +3,6 @@ import * as Constants from './constants.js'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
-import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 import ResultsGrid from './ResultsGrid.js'
 import Dropdown from './Dropdown.js'
@@ -105,6 +104,10 @@ function Controls() {
                 <Link href='https://unfccc.int/documents/636676'> UNFCCC Final List of Participants – on site delegates-excel file</Link>.
                 The excel file separates delegate by badge category and draws its data from what is submitted when a delegate is nominated
                 and confirmed.
+              </p>
+              <p>
+                This is a work in progress, and we hope it is helpful to you in your research and understanding of COP delegates. If you
+                have any suggestions for improvement, email <a href='mailto: martin@wustl.edu'>martin@wustl.edu</a>.
               </p>
             </Box>
 

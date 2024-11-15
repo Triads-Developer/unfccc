@@ -9,7 +9,7 @@ function Tutorial({ handleDismissTutorial }) {
       <div className='tutorial-box'>
         <h2>Welcome to Washington University in St. Louis&apos; searchable UNFCCC COP FLOP database.</h2>
         <p>
-          This site will allow you to view, query and export data from the UNFCCC COP 29 Final List of Participants data set (FLOP data) for
+          This site will allow you to view, query and export data from the UNFCCC COP 28 Final List of Participants data set (FLOP data) for
           on-site delegates.
         </p>
         <p>
@@ -17,7 +17,7 @@ function Tutorial({ handleDismissTutorial }) {
           <Link href='https://unfccc.int/documents/636676'>United Nations Framework Convention on Climate Change (UNFCCC) website.</Link>{' '}
         </p>
         <p>
-          This is a work in progress, and we hope it is helpful to you in your research and understanding of COP delegates. If you have any
+          This is a work in progress, and we hope it is helpful to you in your research and transparency of COP attendance. If you have any
           suggestions for improvement, email <a href='mailto: martin@wustl.edu'>martin@wustl.edu</a>.
         </p>
 
