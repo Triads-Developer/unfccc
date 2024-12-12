@@ -1,4 +1,4 @@
-import global_climate_action_data from './data/global_climate_action.json'
+import global_climate_action from './data/global_climate_action.json'
 import host_country_guests from './data/host_country_guests.json'
 import intergovernmental_orgs from './data/intergovernmental_orgs.json'
 import media from './data/media.json'
@@ -10,10 +10,11 @@ import temp_passes from './data/temp_passes.json'
 import un_secretariat_units_bodies from './data/un_secretariat_units_bodies.json'
 import un_secretariat_units_bodies_overflow from './data/un_secretariat_units_bodies_overflow.json'
 import parties from './data/parties.json'
+import conference_invitees from './data/conference_invitees'
 
 export const keys = [
   'parties',
-  'global_climate_action_data',
+  'global_climate_action',
   'host_country_guests',
   'intergovernmental_orgs',
   'media',
@@ -23,12 +24,13 @@ export const keys = [
   'special_agencies_and_rel_orgs_overflow',
   'temp_passes',
   'un_secretariat_units_bodies',
-  'un_secretariat_units_bodies_overflow'
+  'un_secretariat_units_bodies_overflow',
+  'conference_invitees'
 ]
 
 export const Datasets = {
   parties: parties,
-  global_climate_action_data: global_climate_action_data,
+  global_climate_action: global_climate_action,
   host_country_guests: host_country_guests,
   intergovernmental_orgs: intergovernmental_orgs,
   media: media,
@@ -38,7 +40,8 @@ export const Datasets = {
   special_agencies_and_rel_orgs_overflow: special_agencies_and_rel_orgs_overflow,
   temp_passes: temp_passes,
   un_secretariat_units_bodies: un_secretariat_units_bodies,
-  un_secretariat_units_bodies_overflow: un_secretariat_units_bodies_overflow
+  un_secretariat_units_bodies_overflow: un_secretariat_units_bodies_overflow,
+  conference_invitees: conference_invitees
 }
 
 export const relationOptions = [
@@ -259,4 +262,4 @@ export const searchBoxInstructions =
   'Search Box – please enter a search term which will be conducted across Title, Department, Organization, Nominator and Name.'
 
 export const searchInstructions =
-  'This data comes from the COP 28 UNFCCC Final List of Participants – on site delegates-excel file. The excel file separates delegate by badge category and draws its data from what is submitted when a delegate is nominated and confirmed.'
+  'This data comes from the COP 29 UNFCCC Final List of Participants – on site delegates-excel file. The excel file separates delegate by badge category and draws its data from what is submitted when a delegate is nominated and confirmed.'

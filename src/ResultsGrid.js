@@ -8,11 +8,11 @@ import * as Constants from './constants.js'
 function ResultsGrid({ results }) {
   const columns = [
     { field: 'id', headerName: 'ID', minWidth: 10 },
-    { field: 'Nominator', headerName: 'Nominator', flex: 1, minWidth: 125 },
+    { field: 'Nominated by', headerName: 'Nominated By', flex: 1, minWidth: 125 },
     { field: 'Name', headerName: 'Name', flex: 1, minWidth: 125 },
     { field: 'Functional title', headerName: 'Functional Title', flex: 1, minWidth: 125 },
     { field: 'Department', headerName: 'Department', flex: 1, minWidth: 125 },
-    { field: 'Organization', headerName: 'Organization', flex: 1, minWidth: 125 },
+    { field: 'Home organization', headerName: 'Home Organization', flex: 1, minWidth: 125 },
     {
       field: 'Relation',
       headerName: 'Relation',

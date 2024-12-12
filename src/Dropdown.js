@@ -13,7 +13,10 @@ function Dropdown({ label, val, handleValChange, options, allowMultiple }) {
 
     currentName = currentName.replaceAll('orgs', 'organizations')
     currentName = currentName.replaceAll('temp', 'temporary')
-    currentName = currentName.replaceAll('units bodies', 'unites and bodies')
+    currentName = currentName.replaceAll('units bodies', 'units and bodies')
+    currentName = currentName.replaceAll('un secretariat', 'United Nations Secretariat')
+    currentName = currentName.replaceAll('non govermental', 'Non-governmental')
+    currentName = currentName.replaceAll('and rel', 'and related')
     return currentName
   }
 

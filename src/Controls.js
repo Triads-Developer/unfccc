@@ -100,14 +100,20 @@ function Controls() {
           <Box className={hideFilters ? 'hidden' : ''} sx={{ m: 3, marginTop: '25px' }}>
             <Box sx={{ maxWidth: '100%', pb: '1em' }}>
               <p>
-                This data comes from the{' '}
-                <Link href='https://unfccc.int/documents/636674'> UNFCCC Final List of Participants – on site delegates-excel file</Link>.
-                The excel file separates delegate by badge category and draws its data from what is submitted when a delegate is nominated
-                and confirmed.
+                This site will allow you to view, query and export data from the UNFCCC COP 29 Final List of Participants data set (FLOP
+                data) for on-site delegates.
               </p>
               <p>
-                This is a work in progress, and we hope it is helpful to you in your research and understanding of COP delegates. If you
-                have any suggestions for improvement, email <a href='mailto: martin@wustl.edu'>martin@wustl.edu</a>.
+                This data comes from the <Link href='https://unfccc.int/documents/644762'> UNFCCC Final List of Participants</Link> and{' '}
+                <Link href='https://unfccc.int/documents/644763'>it’s associated on-site delegates-excel file</Link>. The excel file
+                separates delegate by badge category and draws its data from what is submitted when a delegate is nominated and confirmed.
+              </p>
+              <p>
+                This is a work in progress, and we hope it is helpful to you in your research and helps provide transparency of COP
+                attendance. Let us know{' '}
+                <Link hrf='https://docs.google.com/forms/d/e/1FAIpQLSdo2VOtnncR_F0PIWuHiKA4XdKa1Syq9N38jDZk7gu9bIR_ow/viewform'>
+                  how you are using the data and if you have any suggestions for improvement by completing this form.
+                </Link>
               </p>
             </Box>
 
@@ -150,7 +156,7 @@ function Controls() {
             <TextField
               sx={{ width: '100%' }}
               id='outlined-controlled'
-              label='Title, Department, Organization, Nominator, and Name'
+              label='Title, Department, Organization, Nominated By, and Name'
               value={searchTerms}
               onChange={(event) => {
                 setSearchTerms(event.target.value)
