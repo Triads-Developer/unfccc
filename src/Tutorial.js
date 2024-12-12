@@ -18,7 +18,7 @@ function Tutorial({ handleDismissTutorial }) {
         </p>
         <p>
           This is a work in progress, and we hope it is helpful to you in your research and helps provide transparency of COP attendance.
-          Let us know
+          Let us know{' '}
           <Link hrf='https://docs.google.com/forms/d/e/1FAIpQLSdo2VOtnncR_F0PIWuHiKA4XdKa1Syq9N38jDZk7gu9bIR_ow/viewform'>
             how you are using the data and if you have any suggestions for improvement by completing this form.
           </Link>
