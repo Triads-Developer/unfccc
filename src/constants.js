@@ -10,7 +10,7 @@ import temp_passes from './data/temp_passes.json'
 import un_secretariat_units_bodies from './data/un_secretariat_units_bodies.json'
 import un_secretariat_units_bodies_overflow from './data/un_secretariat_units_bodies_overflow.json'
 import parties from './data/parties.json'
-import conference_invitees from './data/conference_invitees'
+import conference_invitees from './data/conference_invitees.json'
 
 export const keys = [
   'parties',
