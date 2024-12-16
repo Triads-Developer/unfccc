@@ -13,6 +13,7 @@ function ResultsGrid({ results }) {
     { field: 'Functional title', headerName: 'Functional Title', flex: 1, minWidth: 125 },
     { field: 'Department', headerName: 'Department', flex: 1, minWidth: 125 },
     { field: 'Home organization', headerName: 'Home Organization', flex: 1, minWidth: 125 },
+    { field: 'Badge Category', headerName: 'Badge Category', flex: 1, minWidth: 125 },
     {
       field: 'Relation',
       headerName: 'Relation',
