@@ -29,8 +29,8 @@ export default function Search(data, nominator, relation, searchTerms) {
   }
 
   const options = {
-    keys: ['Nominated by', 'Functional title', 'Department', 'Home organization', 'Name'],
-    threshold: 0.2
+    keys: ['Nominated by', 'Functional title', 'Department', 'Home Organization', 'Name'],
+    threshold: 0.15
   }
 
   let filteredDataset = filterDatasetByNominator(data, nominator)

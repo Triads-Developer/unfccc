@@ -151,6 +151,7 @@ function Controls() {
 
             <Box sx={{ maxWidth: '100%' }}>
               <p>{Constants.searchBoxInstructions}</p>
+              <p>{Constants.searchBoxNote}</p>
             </Box>
 
             <TextField

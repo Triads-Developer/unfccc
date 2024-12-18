@@ -261,5 +261,8 @@ export const relationInstructions =
 export const searchBoxInstructions =
   'Search Box – please enter a search term which will be conducted across Title, Department, Organization, Nominator and Name.'
 
+export const searchBoxNote =
+  'The search function is not an exact word match. It uses approximation to avoid missing values due to typos or alternative spellings.'
+
 export const searchInstructions =
   'This data comes from the COP 29 UNFCCC Final List of Participants – on site delegates-excel file. The excel file separates delegate by badge category and draws its data from what is submitted when a delegate is nominated and confirmed.'
