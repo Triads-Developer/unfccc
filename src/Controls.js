@@ -118,6 +118,7 @@ function Controls() {
             </Box>
 
             <Dropdown
+              data-testid='badge-category-dropdown'
               label='Badge Category *'
               val={datasetName}
               handleValChange={handleDatasetNameChange}

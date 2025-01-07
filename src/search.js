@@ -5,7 +5,7 @@ export default function Search(data, nominator, relation, searchTerms) {
   const filterDatasetByNominator = (data, nominator) => {
     if (nominator.length > 0) {
       return data.filter((item) => {
-        return nominator.indexOf(item.Nominator) !== -1
+        return nominator.indexOf(item['Nominated by']) !== -1
       })
     } else {
       return data
@@ -29,7 +29,7 @@ export default function Search(data, nominator, relation, searchTerms) {
   }
 
   const options = {
-    keys: ['Nominated by', 'Functional title', 'Department', 'Home Organization', 'Name'],
+    keys: ['Home organization', 'Nominated by', 'Functional title', 'Department', 'Name'],
     threshold: 0.15
   }
 

@@ -262,7 +262,7 @@ export const searchBoxInstructions =
   'Search Box – please enter a search term which will be conducted across Title, Department, Organization, Nominator and Name.'
 
 export const searchBoxNote =
-  'The search function is not an exact word match. It uses approximation to avoid missing values due to typos or alternative spellings.'
+  'The search function is not an exact word match. It uses approximation to avoid missing values due to typos or alternative spellings. Using "or", "and", or quotation marks will not improve search functionality. If you want to search within results, you can use the filters in the column headers (it says “Contains” by default). If you have suggestions for improvement, please click on the form above.'
 
 export const searchInstructions =
   'This data comes from the COP 29 UNFCCC Final List of Participants – on site delegates-excel file. The excel file separates delegate by badge category and draws its data from what is submitted when a delegate is nominated and confirmed.'

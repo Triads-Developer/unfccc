@@ -34,7 +34,8 @@
     "lint": "eslint  --fix src/**/*.js",
     "format": "prettier src/**/*.js --write --config ./.prettierrc",
     "deploy-dev": "./dev_deploy.sh",
-    "deploy-stage": "./stage_deploy.sh"
+    "deploy-stage": "./stage_deploy.sh",
+    "deploy-prod": "./prod_deploy.sh"
   },
   "eslintConfig": {
     "extends": [
